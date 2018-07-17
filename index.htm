@@ -30,25 +30,21 @@
 					$("#playing-card text")
 						.html('\uf0f4')
 						.css("font-size", "3em")
-						.attr("y", "60%")
 						.addClass("fas fa-coffee");					
 				} else if(cardValue >= 100){
 					$("#playing-card text")
 						.html(cardValue)
 						.css("font-size", "2.5em")
-						.attr("y", "50%")
 						.removeClass("fas fa-coffee");;
 				} else if(cardValue >= 10){
 					$("#playing-card text")
 						.html(cardValue)
 						.css("font-size", "4em")
-						.attr("y", "60%")
 						.removeClass("fas fa-coffee");;
 				} else {
 					$("#playing-card text")
 						.html(cardValue)
 						.css("font-size", "6em")
-						.attr("y", "75%")
 						.removeClass("fas fa-coffee");;
 				}
 
@@ -85,7 +81,7 @@
 				<div id="playing-card" class="mb-3">
 					<div class="front">
 						<svg width="100%" height="97%" viewBox="0 0 67 100" preserveAspectRatio="xMidYMid meet">
-							<text x="50%" y="75%" alignment-baseline="middle" text-anchor="middle" id="svg-score"></text>
+							<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" id="svg-score"></text>
 						</svg>
 					</div>
 					<div class="back">
