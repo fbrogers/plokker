@@ -1,10 +1,16 @@
 #playing-card svg{
 	max-width: 100%;
 	font-family: "Arial";
-	font-size: 4em;
-	letter-spacing: -6px;
 }
 
-.fawesome{
-	font-family: "Font Awesome 5 Free";
+.one-digit{
+	font-size: 6em;
+}
+
+.two-digits{
+	font-size: 4em;
+}
+
+.three-digits{
+	font-size: 3em;
 }
