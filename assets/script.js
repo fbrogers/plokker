@@ -3,7 +3,7 @@ $(function(){
     var availableHtml = "";
     mainOptions.forEach(function(e){
         var element = e.toString();
-        availableHtml += '<div class="col-sm-4 mb-3">'+
+        availableHtml += '<div class="col-4 mb-3">'+
             '<div class="btn btn-block btn-sm btn-outline-secondary">';
         if(element.lastIndexOf("fa-", 0) === 0){
             availableHtml += '<i class="fas '+element+'"></i>';
@@ -14,11 +14,13 @@ $(function(){
     });
     $("#available-div").html(availableHtml);
 
+    //init flipping card
     $("#playing-card").flip({
         'trigger': 'manual'
     });
     $("#playing-card").flip(true);
 
+    //tapping the card flips it, shows modal if empty
     $("#playing-card").on("click", function(){
         if($("#svg-score").html() == ""){
             $("#numbersModal").modal('show');
@@ -27,10 +29,12 @@ $(function(){
         $("#playing-card").flip('toggle');
     });
 
+    //selecting a number flips the card face down
     $("#action-number").on("click", function(){
         $("#playing-card").flip(true);
     });
 
+    //selecting a number does a bunch of stuff
     $(".ruleset-buttons .btn").on("click", function(){
         var cardValue = $(this).html().trim();
         if(cardValue == '<i class="fas fa-coffee"></i>'){
@@ -54,7 +58,6 @@ $(function(){
             .css("font-size", "6em")
             .removeClass("fas fa-coffee");;
         }
-
         $("#numbersModal").modal('hide');
         $("#playing-card").flip(false);
     });
