@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Plokker</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://assets.sdes.ucf.edu/cdn/minerva/v1.0.0-beta/css/minerva.css" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$(function(){
+			$(".ruleset-buttons .btn").on("click", function(){
+				var cardValue = $(this).html();
+				$("#playing-card text").html(cardValue);
+				$("#svg-score").show();
+				$("#extra-options").show();
+			});
+
+			$("#action-ready").on("click", function(){
+				$(".ruleset-buttons").hide();
+				$("#extra-options").hide();
+				$("#svg-score").hide();
+				$("#svg-cardback").show();
+			});
+
+			$("#svg-cardback").on("click", function(){
+				$("#svg-cardback").hide();
+				$("#svg-score").show();
+			});
+
+			$("#svg-score").on("click", function(){
+				$("#svg-score").hide();
+				$("#svg-cardback").show();
+			});
+
+			$("#action-reset").on("click", function(e){
+				$("#svg-score").hide();
+				$("#svg-cardback").hide();
+				$(".ruleset-buttons").show();
+				$("#extra-options").hide();
+				e.preventDefault();
+			});
+		});
+	</script>
+</head>
+<body>
+	<a href="#content" class="sr-only sr-only-focusable">Skip to Main Content</a>
+	<header>
+		<nav class="navbar navbar-dark navbar-expand-lg slim-nav slim-nav-dark">
+			<div class="container">
+				<a class="navbar-brand" href="#">Plokker</a>
+				<button class="btn btn-warning" id="action-reset">Reset</button>
+			</div>
+		</nav>
+	</header>
+
+	<div class="container site-content">
+		<div class="row">
+			<div class="col-10 col-sm-8 col-md-6 col-lg-5 col-xl-4 mx-auto">
+				<div class="card" style="min-height: 450px;">
+					<div class="card-body">
+						<div id="playing-card">
+							<svg width="100%" height="100%" viewBox="0 0 67 100" preserveAspectRatio="xMidYMid meet">
+								<text font-size="50" x="50%" y="50%" alignment-baseline="middle" text-anchor="middle" id="svg-score"></text>
+								<image id="svg-cardback" style="display: none;" height="100%" width="100%" xlink:href="https://upload.wikimedia.org/wikipedia/commons/5/54/Card_back_06.svg"/>
+							</svg>
+						</div>
+						<div id="extra-options" style="display: none;">
+							<div class="btn btn-primary float-left" id="action-fun">
+								Fun!
+							</div>
+							<div class="btn btn-success float-right" id="action-ready">
+								Ready
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- content area -->
+	<div class="container">
+		<div class="ruleset-buttons text-center">
+			<hr>
+			<div class="row mb-2">
+				<div class="col-2">
+					<div class="btn btn-block btn-sm btn-outline-secondary">1</div>
+				</div>
+				<div class="col-2">
+					<div class="btn btn-block btn-sm btn-outline-secondary">2</div>
+				</div>
+				<div class="col-2">
+					<div class="btn btn-block btn-sm btn-outline-secondary">3</div>
+				</div>
+				<div class="col-2">
+					<div class="btn btn-block btn-sm btn-outline-secondary">5</div>
+				</div>
+				<div class="col-2">
+					<div class="btn btn-block btn-sm btn-outline-secondary">8</div>
+				</div>
+				<div class="col-2">
+					<div class="btn btn-block btn-sm btn-outline-secondary">13</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-2">
+					<div class="btn btn-block btn-sm btn-outline-secondary">^</div>
+				</div>
+				<div class="col-2">
+					<div class="btn btn-block btn-sm btn-outline-secondary">0</div>
+				</div>
+				<div class="col-2">
+					<div class="btn btn-block btn-sm btn-outline-secondary">20</div>
+				</div>
+				<div class="col-2">
+					<div class="btn btn-block btn-sm btn-outline-secondary">40</div>
+				</div>
+				<div class="col-2">
+					<div class="btn btn-block btn-sm btn-outline-secondary">100</div>
+				</div>
+				<div class="col-2">
+					<div class="btn btn-block btn-sm btn-outline-secondary">?</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

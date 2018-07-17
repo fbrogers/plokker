@@ -1,2 +1,3 @@
-# plokker
-Panning Plokker for the Masses
+# Plokker
+
+Panning Plokker for the masses.
