@@ -1,152 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
-	<title>Plokker</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://assets.sdes.ucf.edu/cdn/minerva/v1.0.0-beta/css/minerva.css" />
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" crossorigin="anonymous">
-	<link rel="stylesheet" href="css/style.css" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Plokker</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://assets.sdes.ucf.edu/cdn/minerva/v1.0.0-beta/css/minerva.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css" />
 
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
-	<script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
-	<script type="text/javascript">
-		$(function(){
-			$("#playing-card").flip({
-				'trigger': 'manual'
-			});
-			$("#playing-card").flip(true);
-
-			$("#action-number").on("click", function(){
-				$("#playing-card").flip(true);
-			});
-
-
-			$(".ruleset-buttons .btn").on("click", function(){
-				var cardValue = $(this).html().trim();
-				if(cardValue == '<i class="fas fa-coffee"></i>'){
-					$("#playing-card text")
-						.html('\uf0f4')
-						.css("font-size", "3em")
-						.addClass("fas fa-coffee");					
-				} else if(cardValue >= 100){
-					$("#playing-card text")
-						.html(cardValue)
-						.css("font-size", "2.5em")
-						.removeClass("fas fa-coffee");;
-				} else if(cardValue >= 10){
-					$("#playing-card text")
-						.html(cardValue)
-						.css("font-size", "4em")
-						.removeClass("fas fa-coffee");;
-				} else {
-					$("#playing-card text")
-						.html(cardValue)
-						.css("font-size", "6em")
-						.removeClass("fas fa-coffee");;
-				}
-
-				$("#numbersModal").modal('hide');
-				$("#playing-card").flip(false);
-			});
-
-			$("#playing-card").on("click", function(){
-				if($("#svg-score").html() == ""){
-					$("#numbersModal").modal('show');
-					return;
-				}
-				$("#playing-card").flip('toggle');
-			});
-		});
-	</script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+    <script src="assets/script.js"></script>
 </head>
 <body>
-	<a href="#content" class="sr-only sr-only-focusable">Skip to Main Content</a>
-	<header>
-		<nav class="navbar navbar-dark navbar-expand-lg slim-nav slim-nav-dark">
-			<div class="container">
-				<a class="navbar-brand" href="#">Plokker</a>
-				<button class="btn btn-warning" id="action-number" data-toggle="modal" data-target="#numbersModal">
-					#
-				</button>
-			</div>
-		</nav>
-	</header>
-
-	<div class="container site-content">
-		<div class="row">
-			<div class="col-10 col-sm-8 col-md-6 col-lg-5 col-xl-4 mx-auto">
-				<div id="playing-card" class="mb-3">
-					<div class="front">
-						<svg width="100%" height="97%" viewBox="0 0 67 100" preserveAspectRatio="xMidYMid meet">
-							<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" id="svg-score"></text>
-						</svg>
-					</div>
-					<div class="back">
-						<svg width="100%" height="100%" viewBox="0 0 67 100" preserveAspectRatio="xMidYMid meet">
-							<image id="svg-cardback" width="100%" height="100%" xlink:href="https://upload.wikimedia.org/wikipedia/commons/5/54/Card_back_06.svg"/>
-						</svg>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div id="numbersModal" class="modal" tabindex="-1" role="dialog">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<div class="modal-body">
-					<div class="ruleset-buttons text-center">
-						<div class="row mb-2">
-							<div class="col-4 mb-2">
-								<div class="btn btn-block btn-sm btn-outline-secondary">0</div>
-							</div>
-							<div class="col-4 mb-2">
-								<div class="btn btn-block btn-sm btn-outline-secondary">1</div>
-							</div>
-							<div class="col-4 mb-2">
-								<div class="btn btn-block btn-sm btn-outline-secondary">2</div>
-							</div>
-							<div class="col-4 mb-2">
-								<div class="btn btn-block btn-sm btn-outline-secondary">3</div>
-							</div>
-							<div class="col-4 mb-2">
-								<div class="btn btn-block btn-sm btn-outline-secondary">5</div>
-							</div>
-							<div class="col-4 mb-2">
-								<div class="btn btn-block btn-sm btn-outline-secondary">8</div>
-							</div>
-							<div class="col-4 mb-2">
-								<div class="btn btn-block btn-sm btn-outline-secondary">13</div>
-							</div>
-							<div class="col-4 mb-2">
-								<div class="btn btn-block btn-sm btn-outline-secondary">20</div>
-							</div>
-							<div class="col-4 mb-2">
-								<div class="btn btn-block btn-sm btn-outline-secondary">40</div>
-							</div>
-							<div class="col-4 mb-2">
-								<div class="btn btn-block btn-sm btn-outline-secondary">100</div>
-							</div>
-							<div class="col-4 mb-2">
-								<div class="btn btn-block btn-sm btn-outline-secondary">?</div>
-							</div>
-							<div class="col-4 mb-2">
-								<div class="btn btn-block btn-sm btn-outline-secondary">
-									<i class="fas fa-coffee"></i>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- js -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <a href="#content" class="sr-only sr-only-focusable">Skip to Main Content</a>
+    <header>
+        <nav class="navbar navbar-dark navbar-expand-lg slim-nav slim-nav-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">Plokker</a>
+                <button class="btn btn-warning" id="action-number" data-toggle="modal" data-target="#numbersModal">#</button>
+            </div>
+        </nav>
+    </header>
+    <div class="container site-content">
+        <div class="row">
+            <div class="col-10 col-sm-8 col-md-6 col-lg-5 col-xl-4 mx-auto">
+                <div id="playing-card" class="mb-3">
+                    <div class="front">
+                        <svg width="100%" height="97%" viewBox="0 0 67 100" preserveAspectRatio="xMidYMid meet">
+                            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" id="svg-score"></text>
+                        </svg>
+                    </div>
+                    <div class="back">
+                        <svg width="100%" height="100%" viewBox="0 0 67 100" preserveAspectRatio="xMidYMid meet">
+                            <image id="svg-cardback" width="100%" height="100%" xlink:href="assets/cardback.svg"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="numbersModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="ruleset-buttons text-center">
+                        <div class="row mb-2" id="available-div"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
