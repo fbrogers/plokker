@@ -27,13 +27,29 @@
 			$(".ruleset-buttons .btn").on("click", function(){
 				var cardValue = $(this).html().trim();
 				if(cardValue == '<i class="fas fa-coffee"></i>'){
-					$("#playing-card text").html('\uf0f4').css("font-size", "3em").addClass("fas fa-coffee");					
+					$("#playing-card text")
+						.html('\uf0f4')
+						.css("font-size", "3em")
+						.attr("y", "60%")
+						.addClass("fas fa-coffee");					
 				} else if(cardValue >= 100){
-					$("#playing-card text").html(cardValue).css("font-size", "3em").removeClass("fas fa-coffee");;
-				} else if(cardValue > 10){
-					$("#playing-card text").html(cardValue).css("font-size", "4em").removeClass("fas fa-coffee");;
+					$("#playing-card text")
+						.html(cardValue)
+						.css("font-size", "2.5em")
+						.attr("y", "50%")
+						.removeClass("fas fa-coffee");;
+				} else if(cardValue >= 10){
+					$("#playing-card text")
+						.html(cardValue)
+						.css("font-size", "4em")
+						.attr("y", "60%")
+						.removeClass("fas fa-coffee");;
 				} else {
-					$("#playing-card text").html(cardValue).css("font-size", "6em").removeClass("fas fa-coffee");;
+					$("#playing-card text")
+						.html(cardValue)
+						.css("font-size", "6em")
+						.attr("y", "75%")
+						.removeClass("fas fa-coffee");;
 				}
 
 				$("#numbersModal").modal('hide');
@@ -41,7 +57,10 @@
 			});
 
 			$("#playing-card").on("click", function(){
-				if($("#svg-score").html() == "") return;
+				if($("#svg-score").html() == ""){
+					$("#numbersModal").modal('show');
+					return;
+				}
 				$("#playing-card").flip('toggle');
 			});
 		});
@@ -53,6 +72,9 @@
 		<nav class="navbar navbar-dark navbar-expand-lg slim-nav slim-nav-dark">
 			<div class="container">
 				<a class="navbar-brand" href="#">Plokker</a>
+				<button class="btn btn-warning" id="action-number" data-toggle="modal" data-target="#numbersModal">
+					#
+				</button>
 			</div>
 		</nav>
 	</header>
@@ -63,19 +85,14 @@
 				<div id="playing-card" class="mb-3">
 					<div class="front">
 						<svg width="100%" height="97%" viewBox="0 0 67 100" preserveAspectRatio="xMidYMid meet">
-							<text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle" id="svg-score"></text>
+							<text x="50%" y="75%" alignment-baseline="middle" text-anchor="middle" id="svg-score"></text>
 						</svg>
 					</div>
 					<div class="back">
 						<svg width="100%" height="100%" viewBox="0 0 67 100" preserveAspectRatio="xMidYMid meet">
-							<image id="svg-cardback" height="100%" width="100%" xlink:href="https://upload.wikimedia.org/wikipedia/commons/5/54/Card_back_06.svg"/>
+							<image id="svg-cardback" width="100%" height="100%" xlink:href="https://upload.wikimedia.org/wikipedia/commons/5/54/Card_back_06.svg"/>
 						</svg>
 					</div>
-				</div>
-				<div id="extra-options">
-					<button class="btn btn-outline-secondary btn-block" id="action-number" data-toggle="modal" data-target="#numbersModal">
-						#
-					</button>
 				</div>
 			</div>
 		</div>

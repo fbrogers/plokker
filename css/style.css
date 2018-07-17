@@ -1,10 +1,6 @@
 #playing-card .front svg{
-	font-family: "Arial";
+	font-family: "Trebuchet MS", sans-serif;
 	border: 1px solid #ccc;
 	border-radius: 15px;
 	background-color: #fafafa;
-}
-
-#playing-card .back{
-
 }
