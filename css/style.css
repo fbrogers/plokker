@@ -1,16 +1,10 @@
-#playing-card svg{
-	max-width: 100%;
+#playing-card .front svg{
 	font-family: "Arial";
+	border: 1px solid #ccc;
+	border-radius: 15px;
+	background-color: #fafafa;
 }
 
-.one-digit{
-	font-size: 6em;
-}
+#playing-card .back{
 
-.two-digits{
-	font-size: 4em;
-}
-
-.three-digits{
-	font-size: 3em;
 }

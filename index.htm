@@ -11,74 +11,38 @@
 	<link rel="stylesheet" href="css/style.css" />
 
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
-			function resetState(){
-				$("#svg-score").hide();
-				$("#svg-cardback").show();
-				$(".ruleset-buttons").show();
-				$("#extra-options").show();
-				$("#action-ready").prop('disabled', true);
-			}
-			
-			resetState();
+			$("#playing-card").flip({
+				'trigger': 'manual'
+			});
+			$("#playing-card").flip(true);
+
+			$("#action-number").on("click", function(){
+				$("#playing-card").flip(true);
+			});
+
 
 			$(".ruleset-buttons .btn").on("click", function(){
 				var cardValue = $(this).html().trim();
 				if(cardValue == '<i class="fas fa-coffee"></i>'){
-					$("#playing-card text").html('\uf0f4').addClass("fas fa-coffee");					
+					$("#playing-card text").html('\uf0f4').css("font-size", "3em").addClass("fas fa-coffee");					
 				} else if(cardValue >= 100){
-					$("#playing-card text").html(cardValue)
-						.removeClass("one-digit")
-						.removeClass("two-digits")
-						.removeClass("three-digits")
-						.removeClass("fas fa-coffee")
-						.addClass("three-digits");
+					$("#playing-card text").html(cardValue).css("font-size", "3em").removeClass("fas fa-coffee");;
 				} else if(cardValue > 10){
-					$("#playing-card text").html(cardValue)
-						.removeClass("one-digit")
-						.removeClass("two-digits")
-						.removeClass("three-digits")
-						.removeClass("fas fa-coffee")
-						.addClass("two-digits");
+					$("#playing-card text").html(cardValue).css("font-size", "4em").removeClass("fas fa-coffee");;
 				} else {
-					$("#playing-card text").html(cardValue)
-						.removeClass("one-digit")
-						.removeClass("two-digits")
-						.removeClass("three-digits")
-						.removeClass("fas fa-coffee")
-						.addClass("one-digit");
+					$("#playing-card text").html(cardValue).css("font-size", "6em").removeClass("fas fa-coffee");;
 				}
 
 				$("#numbersModal").modal('hide');
-				$("#svg-cardback").hide();
-				$("#svg-score").show();
-				$("#extra-options button").prop('disabled', false);
+				$("#playing-card").flip(false);
 			});
 
-			$("#action-ready").on("click", function(){
-				$(".ruleset-buttons").hide();
-				$("#extra-options").slideUp();
-				$("#svg-score").hide();
-				$("#svg-cardback").show();
-			});
-
-			$("#svg-cardback").on("click", function(){
-				if($("#svg-score").html() == ""){
-					return;
-				}
-				$("#svg-cardback").hide();
-				$("#svg-score").show();
-			});
-
-			$("#svg-score").on("click", function(){
-				$("#svg-score").hide();
-				$("#svg-cardback").show();
-			});
-
-			$("#action-reset").on("click", function(e){
-				resetState();
-				e.preventDefault();
+			$("#playing-card").on("click", function(){
+				if($("#svg-score").html() == "") return;
+				$("#playing-card").flip('toggle');
 			});
 		});
 	</script>
@@ -89,9 +53,6 @@
 		<nav class="navbar navbar-dark navbar-expand-lg slim-nav slim-nav-dark">
 			<div class="container">
 				<a class="navbar-brand" href="#">Plokker</a>
-				<button class="btn btn-warning" id="action-reset">
-					<i class="fas fa-sync-alt"></i>
-				</button>
 			</div>
 		</nav>
 	</header>
@@ -99,22 +60,21 @@
 	<div class="container site-content">
 		<div class="row">
 			<div class="col-10 col-sm-8 col-md-6 col-lg-5 col-xl-4 mx-auto">
-				<div class="card mb-3" style="min-height: 50vh;">
-					<div class="card-body">
-						<div id="playing-card">
-							<svg width="100%" height="50%" viewBox="0 0 75 100" preserveAspectRatio="xMidYMid meet">
-								<text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle" id="svg-score"></text>
-								<image id="svg-cardback" height="100%" width="100%" xlink:href="https://upload.wikimedia.org/wikipedia/commons/5/54/Card_back_06.svg"/>
-							</svg>
-						</div>
+				<div id="playing-card" class="mb-3">
+					<div class="front">
+						<svg width="100%" height="97%" viewBox="0 0 67 100" preserveAspectRatio="xMidYMid meet">
+							<text x="50%" y="50%" alignment-baseline="middle" text-anchor="middle" id="svg-score"></text>
+						</svg>
+					</div>
+					<div class="back">
+						<svg width="100%" height="100%" viewBox="0 0 67 100" preserveAspectRatio="xMidYMid meet">
+							<image id="svg-cardback" height="100%" width="100%" xlink:href="https://upload.wikimedia.org/wikipedia/commons/5/54/Card_back_06.svg"/>
+						</svg>
 					</div>
 				</div>
 				<div id="extra-options">
-					<button class="btn btn-primary float-left" id="action-number" data-toggle="modal" data-target="#numbersModal">
+					<button class="btn btn-outline-secondary btn-block" id="action-number" data-toggle="modal" data-target="#numbersModal">
 						#
-					</button>
-					<button class="btn btn-success float-right" id="action-ready">
-						<i class="fas fa-check-square"></i>
 					</button>
 				</div>
 			</div>
