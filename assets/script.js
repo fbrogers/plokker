@@ -59,6 +59,6 @@ $(function(){
             .removeClass("fas fa-coffee");;
         }
         $("#numbersModal").modal('hide');
-        $("#playing-card").flip(false);
+        $("#playing-card").flip(true);
     });
 });
